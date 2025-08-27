@@ -16,6 +16,9 @@ def run_setup():
     
     print("Required files not found. Running data preparation and model training...")
     
+    # Create models directory if it doesn't exist
+    os.makedirs('models', exist_ok=True)
+    
     # Run data preparation
     print("Running data preparation...")
     result = subprocess.run([sys.executable, "scripts/data_prep.py"], capture_output=True, text=True)

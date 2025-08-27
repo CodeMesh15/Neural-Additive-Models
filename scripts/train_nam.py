@@ -42,6 +42,9 @@ for epoch in range(EPOCHS):
         epoch_loss += loss.item()
     print(f"Epoch {epoch+1}/{EPOCHS} | Loss: {epoch_loss/len(train_loader):.4f}")
 
+# Create models directory if it doesn't exist
+os.makedirs('models', exist_ok=True)
+
 # Save model
 torch.save(model.state_dict(), 'models/trained_nam.pth')
 print("NAM model trained and saved!")

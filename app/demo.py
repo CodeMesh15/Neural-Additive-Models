@@ -32,6 +32,66 @@ Effect curves are visual representations showing how each individual feature con
 This is the key innovation of NAMs - they combine the predictive power of neural networks with the interpretability of simpler models.
 """)
 
+# Check if required files exist, if not, show setup instructions
+REQUIRED_FILES = ["data/X_train.csv", "models/trained_nam.pth"]
+missing_files = [f for f in REQUIRED_FILES if not os.path.exists(f)]
+
+if missing_files:
+    st.warning("Required files are missing. This app needs to be set up before use.")
+    
+    # Check if we're in a Streamlit Cloud environment
+    if "STREAMLIT_CLOUD" in os.environ or "STREAMLIT_SERVER" in os.environ:
+        st.info("Running setup for Streamlit Cloud...")
+        # In a real implementation, we would run the setup here
+        # For now, we'll just show instructions
+        st.markdown("""
+        ### Setup Instructions for Streamlit Cloud:
+        
+        1. The app needs to prepare data and train the model on first run
+        2. This happens automatically in the background
+        3. Please wait a few moments for the setup to complete
+        """)
+    else:
+        st.markdown("""
+        ### Setup Instructions:
+        
+        1. Run the data preparation script:
+           ```
+           python scripts/data_prep.py
+           ```
+        
+        2. Train the model:
+           ```
+           python scripts/train_nam.py
+           ```
+        
+        3. Refresh this page
+        """)
+    
+    # Try to run setup automatically
+    with st.spinner("Setting up... This may take a minute."):
+        try:
+            import subprocess
+            # Run data preparation
+            result = subprocess.run([sys.executable, "scripts/data_prep.py"], capture_output=True, text=True)
+            if result.returncode != 0:
+                st.error(f"Error in data preparation: {result.stderr}")
+            else:
+                st.success("Data preparation completed!")
+                
+                # Run model training
+                result = subprocess.run([sys.executable, "scripts/train_nam.py"], capture_output=True, text=True)
+                if result.returncode != 0:
+                    st.error(f"Error in model training: {result.stderr}")
+                else:
+                    st.success("Model training completed!")
+                    st.info("Please refresh the page to use the app.")
+        except Exception as e:
+            st.error(f"Setup failed: {str(e)}")
+            st.info("Please run the setup scripts manually as described above.")
+    
+    st.stop()
+
 # Load model
 HIDDEN_DIM = 32
 MODEL_PATH = "models/trained_nam.pth"

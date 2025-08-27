@@ -190,6 +190,15 @@ year={2021}
 ### Q: Can I use this for regression?
 **A:** Yes, just adjust the output layer and loss function.
 
+### Q: How do I deploy this to Streamlit Cloud?
+**A:** Simply connect your GitHub repository to Streamlit Cloud. The app will automatically:
+1. Detect missing data files
+2. Run data preparation scripts
+3. Train the model
+4. Launch the interactive interface
+
+The first run may take a few minutes as it prepares the data and trains the model.
+
 ---
 
 **Ready to help people trust powerful neural models in practice!**

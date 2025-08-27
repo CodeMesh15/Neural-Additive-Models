@@ -32,18 +32,16 @@ Classical approaches like Generalized Additive Models (GAMs) offer full transpar
 
 **Generalized Additive Models (GAMs):**
 - Predict the outcome as a sum of independent feature effects:
-  \[
-  g(E[y]) = \beta + f_1(x_1) + f_2(x_2) + \ldots + f_K(x_K)
-  \]
+ <img width="611" height="66" alt="image" src="https://github.com/user-attachments/assets/7e0b2a6f-5967-40df-8e80-a0efe9eb1649" />
+
 - Each \( f_i(x_i) \) is a simple function (like a spline or low-degree polynomial).
 - **Pros:** Easy to interpret—one can plot and analyze each feature’s effect.
 - **Cons:** Limited to simple relationships; can’t model intricate, high-dimensional patterns.
 
 **Neural Additive Models (NAMs):**
 - Same additive structure as GAMs, but **each \( f_i(x_i) \) is parameterized as a neural network**, allowing much greater complexity:
-  \[
-  y = \beta + f_1^{NN}(x_1) + f_2^{NN}(x_2) + \ldots + f_n^{NN}(x_n)
-  \]
+ <img width="646" height="69" alt="image" src="https://github.com/user-attachments/assets/71061f4a-bb64-4ee8-af11-b9c3693c039d" />
+
 - **Every feature has its own neural sub-network** (often a multilayer perceptron).
 - **Each sub-network can learn flexible, nonlinear mappings** from feature input to effects.
 - Retains all the interpretability of GAMs: still possible to plot \( f_i \) for each feature!

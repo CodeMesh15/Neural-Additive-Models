@@ -1,4 +1,7 @@
 import torch
+import sys
+import os
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from nam.model import NAM
 import pandas as pd
 import torch.nn as nn
@@ -32,7 +35,7 @@ for epoch in range(EPOCHS):
     epoch_loss = 0
     for Xb, yb in train_loader:
         optimizer.zero_grad()
-        logits = model(Xb).squeeze(1)
+        logits = model(Xb)  # The model already returns the correct shape
         loss = criterion(logits, yb)
         loss.backward()
         optimizer.step()

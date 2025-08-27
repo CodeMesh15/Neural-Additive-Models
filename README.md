@@ -88,5 +88,110 @@ Classical approaches like Generalized Additive Models (GAMs) offer full transpar
 
 ---
 
-## 🏗️ Project Structure
+---
+
+## ⚡ Quickstart
+
+1. **Clone the repo:**
+
+```bash
+git clone https://github.com/yourusername/nam-interpretable
+cd nam-interpretable
+```
+
+2. **Install dependencies:**
+
+```bash
+pip install -r requirements.txt
+```
+
+3. **Prepare data:**
+- Place your CSV in `data/`, or use the sample provided (e.g., `PIMA_diabetes.csv`).
+
+4. **Train a NAM:**
+
+```bash
+python scripts/train_nam.py --data_file data/PIMA_diabetes.csv
+```
+( I just put my file location here for reference , change it for yours )
+
+
+5. **Visualize Feature Effects:**
+
+```bash
+python scripts/visualize_nam.py --model_path models/trained_nam.pth
+```
+
+6. **(Optional) Start Web App:**
+
+```bash
+streamlit run app/demo.py
+```
+
+---
+
+## 🧑‍💻 How To Use for Your Own Data
+
+1. Drop your tabular dataset (CSV) into `data/`.
+2. Edit config or script flags for your input columns/target.
+3. Run the training and visualization steps as above.
+4. Use the web app for interactive analysis or predictions.
+
+---
+
+## 📝 Documentation and Notebooks
+
+See `notebooks/` for:
+- *Theory and Motivation* (NAM theory, design philosophy)
+- *Practical Tutorials* (data prep, NAM training, visualization)
+- *Comparisons to Black-Box and Traditional Models*
+
+---
+
+## ⚡ Extending the Repo
+
+- Swap in your dataset or custom NAM architectures
+- Add new visualization methods or web components
+- Implement new applications: credit scoring, disease screening, HR analytics, etc.
+- Contribute improvements via Pull Requests!
+
+---
+
+## 🤝 Contributing
+
+Open to issues, bug reports, and PRs!
+- Please follow our [Contributing Guidelines](CONTRIBUTING.md)
+- For feature requests, open an issue and label it as `enhancement`
+
+---
+
+## 📜 Citation
+
+If you use this repo or the main NAM technique, please cite:
+@inproceedings{
+agarwal2021neural,
+title={Neural Additive Models: Interpretable Machine Learning with Neural Nets},
+author={Rishabh Agarwal et al.},
+booktitle={NeurIPS},
+year={2021}
+}
+
+
+---
+
+## 🙋 FAQ
+
+### Q: What’s required to run this repo?
+**A:** Python 3.8+, PyTorch/TensorFlow (see `requirements.txt`), matplotlib/seaborn, pandas.
+
+### Q: What datasets are supported?
+**A:** Any tabular data (CSV) with numerical/categorical features.
+
+### Q: Can I use this for regression?
+**A:** Yes, just adjust the output layer and loss function.
+
+---
+
+**Ready to help people trust powerful neural models in practice!**
+
 
